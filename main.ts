@@ -1,3 +1,4 @@
+let location: tiles.Location = null
 tiles.setCurrentTilemap(tilemap`level6`)
 let mySprite = sprites.create(img`
     . . . . f f f f f . . . . . . . 
@@ -77,9 +78,6 @@ let mySprite4 = sprites.create(img`
     . . . f 5 f f f 5 f f 5 f . . . 
     . . . f f . . f f . . f f . . . 
     `, SpriteKind.Enemy)
-grid.place(mySprite, tiles.getTileLocation(1, 1))
-grid.snap(mySprite, true)
-grid.moveWithButtons(mySprite)
 mySprite.setStayInScreen(true)
 mySprite2.setStayInScreen(true)
 mySprite3.setStayInScreen(true)
@@ -89,6 +87,24 @@ mySprite2.setPosition(160, 5)
 mySprite3.setPosition(5, 155)
 mySprite4.setPosition(155, 155)
 info.startCountdown(120)
+// This function will update the tile color as the Duck sprite moves
+game.onUpdate(function () {
+    location = tiles.getTileLocation(Math.floor(mySprite.x / 16), Math.floor(mySprite.y / 16))
+    tiles.setTileAt(location, assets.tile`myTile2`)
+})
+// This function will update the tile color as the Duck sprite moves
+game.onUpdate(function () {
+    location = tiles.getTileLocation(Math.floor(mySprite2.x / 16), Math.floor(mySprite2.y / 16))
+    tiles.setTileAt(location, assets.tile`myTile4`)
+})
+game.onUpdate(function () {
+    location = tiles.getTileLocation(0, 0)
+})
+forever(function () {
+    if (true) {
+        controller.moveSprite(mySprite)
+    }
+})
 forever(function () {
     controller.player2.moveSprite(mySprite2)
     controller.player3.moveSprite(mySprite)
