@@ -34,7 +34,7 @@ let mySprite2 = sprites.create(img`
     b b c c c d d d 5 5 5 5 5 d b . 
     . . . . c c d d d 5 5 5 b b . . 
     . . . . . . c c c c c b b . . . 
-    `, SpriteKind.Player)
+    `, SpriteKind.Enemy)
 let mySprite3 = sprites.create(img`
     ........................
     ........................
@@ -60,7 +60,7 @@ let mySprite3 = sprites.create(img`
     ........................
     ........................
     ........................
-    `, SpriteKind.Player)
+    `, SpriteKind.Enemy)
 let mySprite4 = sprites.create(img`
     . . 4 4 4 . . . . 4 4 4 . . . . 
     . 4 5 5 5 e . . e 5 5 5 4 . . . 
@@ -76,16 +76,21 @@ let mySprite4 = sprites.create(img`
     . . . f 5 5 5 5 5 4 5 5 f f . . 
     . . . f 5 f f f 5 f f 5 f . . . 
     . . . f f . . f f . . f f . . . 
-    `, SpriteKind.Player)
+    `, SpriteKind.Enemy)
+grid.place(mySprite, tiles.getTileLocation(1, 1))
+grid.snap(mySprite, true)
+grid.moveWithButtons(mySprite)
 mySprite.setStayInScreen(true)
 mySprite2.setStayInScreen(true)
 mySprite3.setStayInScreen(true)
 mySprite4.setStayInScreen(true)
 mySprite.setPosition(5, 5)
 mySprite2.setPosition(160, 5)
-mySprite3.setPosition(5, 160)
-mySprite4.setPosition(160, 160)
-controller.moveSprite(mySprite, 100, 100)
+mySprite3.setPosition(5, 155)
+mySprite4.setPosition(155, 155)
+info.startCountdown(120)
 forever(function () {
-	
+    controller.player2.moveSprite(mySprite2)
+    controller.player3.moveSprite(mySprite)
+    controller.player4.moveSprite(mySprite)
 })
