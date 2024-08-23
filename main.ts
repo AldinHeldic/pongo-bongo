@@ -88,27 +88,18 @@ mySprite3.setPosition(5, 155)
 mySprite4.setPosition(155, 155)
 info.startCountdown(120)
 game.onUpdate(function () {
-    location = tiles.getTileLocation(0, 0)
-})
-// This function will update the tile color as the Duck sprite moves
-game.onUpdate(function () {
-    location = tiles.getTileLocation(Math.floor(mySprite.x / 16), Math.floor(mySprite.y / 16))
-    tiles.setTileAt(location, assets.tile`myTile2`)
+	
 })
 // This function will update the tile color as the Duck sprite moves
 game.onUpdate(function () {
     location = tiles.getTileLocation(Math.floor(mySprite2.x / 16), Math.floor(mySprite2.y / 16))
     tiles.setTileAt(location, assets.tile`myTile8`)
-})
-// This function will update the tile color as the Duck sprite moves
-game.onUpdate(function () {
-    location = tiles.getTileLocation(Math.floor(mySprite3.x / 16), Math.floor(mySprite3.y / 16))
-    tiles.setTileAt(location, assets.tile`myTile7`)
-})
-// This function will update the tile color as the Duck sprite moves
-game.onUpdate(function () {
     location = tiles.getTileLocation(Math.floor(mySprite4.x / 16), Math.floor(mySprite4.y / 16))
     tiles.setTileAt(location, assets.tile`myTile5`)
+    location = tiles.getTileLocation(Math.floor(mySprite3.x / 16), Math.floor(mySprite3.y / 16))
+    tiles.setTileAt(location, assets.tile`myTile7`)
+    location = tiles.getTileLocation(Math.floor(mySprite.x / 16), Math.floor(mySprite.y / 16))
+    tiles.setTileAt(location, assets.tile`myTile2`)
 })
 forever(function () {
     controller.player1.moveSprite(mySprite)
